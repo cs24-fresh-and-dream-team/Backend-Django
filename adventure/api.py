@@ -17,13 +17,13 @@ class RoomSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'title', 'description', 'n_to', 's_to', 'e_to', 'w_to')
 class RoomViewSet(viewsets.ModelViewSet):
     serializer_class = RoomSerializer
-    queryset = Room.objects.none()
-    def get_queryset(self):
-        user = self.request.user
-        if user.is_anonymous:
-            return Room.objects.none()
-        else:
-            return Room.objects.filter(user=user)
+    queryset = Room.objects.all()
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     if user.is_anonymous:
+    #         return Room.objects.none()
+    #     else:
+    #         return Room.objects.filter(user=user)
 @csrf_exempt
 @api_view(["GET"])
 def initialize(request):
