@@ -8,6 +8,7 @@ from .models import *
 from rest_framework.decorators import api_view
 import json
 from rest_framework import serializers, viewsets
+from util.create_world import create
 
 # instantiate pusher
 # pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
@@ -34,7 +35,11 @@ def initialize(request):
     room = player.room()
     players = room.playerNames(player_id)
     return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
-
+@api_view(["POST"])
+def createWorld(request):
+    print('create a world')
+    create()
+    return JsonResponse({}, safe=True)
 
 # @csrf_exempt
 @api_view(["POST"])
