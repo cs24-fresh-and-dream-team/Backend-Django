@@ -1,5 +1,5 @@
 certifi==2019.11.28
 dj-database-url==0.5.0
-pipenv==2018.11.26
+pipenv==2022.1.8
 virtualenv==16.7.9
 virtualenv-clone==0.5.3
